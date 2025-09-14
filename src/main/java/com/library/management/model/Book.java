@@ -2,13 +2,17 @@ package com.library.management.model;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "books")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book {
 
     @Id

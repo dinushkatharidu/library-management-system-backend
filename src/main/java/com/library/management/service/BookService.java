@@ -2,24 +2,27 @@ package com.library.management.service;
 
 import com.library.management.model.Book;
 import com.library.management.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
 import java.util.List;
 @Service
 public class BookService {
+
+    @Autowired
     private BookRepository bookRepository;
 
-    public List<Book> getAlllBooks(){
+    public List<Book> getAllBooks(){
         return bookRepository.findAll();
     }
 
-    public Book getBookById(Long id){
+    public Book getBookById(Long bookId){
 
-        return bookRepository.findBookById(id);
+        return bookRepository.findById(bookId)
+                .orElseThrow(() -> new RuntimeException("Book not found with id: " + bookId));
 
     }
 
-    public Book createBook(Book newBook){
+    public Book saveBook(Book newBook){
         return bookRepository.save(newBook);
     }
 
@@ -42,6 +45,6 @@ public class BookService {
     public void deleteById(Long bookId){
         Book deletingBook = getBookById(bookId);
 
-        bookRepository.deleteById(deletingBook);
+        bookRepository.delete(deletingBook);
     }
 }
