@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/books")
+@CrossOrigin(origins = "http://localhost:5173")
 public class BookController {
 
     @Autowired
@@ -30,8 +31,8 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public Book updateBook(@PathVariable long bookId, @RequestBody Book bookDetails){
-        return  bookService.updateBook(bookId, bookDetails);
+    public Book updateBook(@PathVariable long id, @RequestBody Book bookDetails){
+        return  bookService.updateBook(id , bookDetails);
     }
 
     @DeleteMapping("/{id}")
