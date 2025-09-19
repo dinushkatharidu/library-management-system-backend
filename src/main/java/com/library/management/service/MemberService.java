@@ -22,6 +22,8 @@ public class MemberService {
                 .orElseThrow(() -> new RuntimeException("Member not found with this ID"));
     }
 
+
+
     public Member saveMember(Member newMember){
         return memberRepository.save(newMember);
     }
@@ -34,8 +36,6 @@ public class MemberService {
         currentMember.setAddress(memberDetails.getAddress());
         currentMember.setPhone(memberDetails.getPhone());
         currentMember.setRegistrationDate(memberDetails.getRegistrationDate());
-
-
         return memberRepository.save(currentMember);
     }
 
